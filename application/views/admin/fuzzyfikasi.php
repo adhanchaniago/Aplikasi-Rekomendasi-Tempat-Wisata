@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<?php $this->load->view('pendukung/header'); ?>
+</head>
+<body>
+<!--top-Header-menu-->
+<?php $this->load->view('pendukung/top_header'); ?>
+<!--close-top-serch-->
+
+
+<!--sidebar-menu-->
+<div id="sidebar"><a href="<?php echo base_url().'admin'?>" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+  <ul>
+    <li><a href="<?php echo base_url().'admin'?>"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
+    <li> <a href="<?php echo base_url().'admin/daftar_wisata'?>"><i class="icon icon-th-list"></i><span>Daftar Wisata</span></a> </li>
+    <li class="submenu "> <a href="#"><i class="icon icon-money"></i> <span>Variabel Harga</span> <span class="label label-important">3</span></a>
+      <ul>
+        <li><a href="<?php echo base_url().'variabel_harga'?>">Daftar Harga</a></li>
+        <li><a href="<?php echo base_url().'variabel_harga/set_kriteria_harga'?>">Set kriteria Harga</a></li>
+        <li><a href="<?php echo base_url().'variabel_harga/derajat_harga'?>">Derajat Keanggotaan Harga</a></li>
+      </ul>
+    </li>
+
+    <li class="submenu"> <a href="#"><i class="icon icon-list"></i> <span>Variabel Fasilitas</span> <span class="label label-important">3</span></a>
+      <ul>
+        <li><a href="<?php echo base_url().'variabel_fasilitas'?>">Daftar Fasilitas</a></li>
+        <li><a href="<?php echo base_url().'variabel_fasilitas/set_kriteria_fasilitas'?>">Set kriteria Fasilitas</a></li>
+        <li><a href="<?php echo base_url().'variabel_fasilitas/derajat_fasilitas'?>">Derajat Keanggotaan Fasilitas</a></li>
+      </ul>
+    </li>
+    <li class="submenu"> <a href="#"><i class="icon  icon-user"></i> <span>Variabel Pengunjung</span> <span class="label label-important">3</span></a>
+      <ul>
+        <li><a href="<?php echo base_url().'variabel_pengunjung'?>">Daftar Pengunjung</a></li>
+        <li><a href="<?php echo base_url().'variabel_pengunjung/set_kriteria_pengunjung'?>">Set kriteria Pengunjung</a></li>
+        <li><a href="<?php echo base_url().'variabel_pengunjung/derajat_pengunjung'?>">Derajat Keanggotaan Pengunjung</a></li>
+      </ul>
+    </li>
+     <li class="submenu"> <a href="#"><i class="icon icon-road"></i> <span>Variabel Jarak</span> <span class="label label-important">3</span></a>
+      <ul>
+        <li><a href="<?php echo base_url().'variabel_jarak'?>">Daftar Jarak</a></li>
+        <li><a href="<?php echo base_url().'variabel_jarak/set_kriteria_jarak'?>">Set kriteria Jarak</a></li>
+        <li><a href="<?php echo base_url().'variabel_jarak/derajat_jarak'?>">Derajat Keanggotaan Jarak</a></li>
+      </ul>
+    </li>
+    <li class="active"> <a href="<?php echo base_url().'admin/fuzzyfikasi'?>"><i class="icon icon-th"></i><span>Hasil Fuzzyfikasi</span></a> </li>
+     <li> <a href="<?php echo base_url().'login/logout'?>"><i class="icon icon-share-alt"></i><span>Logout</span></a>
+     </li>
+  </ul>
+</div>
+<!--sidebar-menu-->
+
+<!--main-container-part-->
+<div id="content">
+<!--breadcrumbs-->
+  <div id="content-header">
+     <div id="breadcrumb"> <a href="<?php echo base_url(); ?>admin" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Beranda</a></div>
+  </div>
+<!--End-breadcrumbs-->
+
+<!--Action boxes-->
+  <div class="container-fluid">
+
+<!--Chart-box-->    
+    <div class="row-fluid">
+        <div class="span12">
+          <!-- <a href="<?php echo base_url(); ?>admin/proses"><button class="btn btn-info">Proses</button></a> -->
+            <div class="widget-box">
+              <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+                <h5>Hasil Fuzzyfikasi</h5>
+              </div>
+              <div class="widget-content nopadding">
+                <table class="table table-bordered data-table">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Nama Wisata</th>
+                      <th>Harga Murah</th>
+                      <th>Harga Sedang</th>
+                      <th>Harga Mahal</th>
+                      <th>Fasilitas Sedikit</th>
+                      <th>Fasilitas Cukup</th>
+                      <th>Fasilitas Banyak</th>
+                      <th>Pengunjung Sepi</th>
+                      <th>Pengunjung Biasa</th>
+                      <th>Pengunjung Ramai</th>
+                      <th>Jarak Dekat</th>
+                      <th>Jarak Sedang</th>
+                      <th>Jarak Jauh</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php $no = 0; foreach($fuzzyfikasi as $row) 
+                    { $no++;
+                    ?>
+                    <tr>
+                        <td><?php echo $no; ?></td>
+                        <td><?php echo $row['nama']; ?></td>
+                        <td><?php echo $row['harga_murah']; ?></td>
+                        <td><?php echo $row['harga_sedang']; ?></td>
+                        <td><?php echo $row['harga_mahal']; ?></td>
+                        <td><?php echo $row['fas_sedikit']; ?></td>
+                        <td><?php echo $row['fas_cukup']; ?></td>
+                        <td><?php echo $row['fas_banyak']; ?></td>
+                        <td><?php echo $row['pengunjung_sepi']; ?></td>
+                        <td><?php echo $row['pengunjung_biasa']; ?></td>
+                        <td><?php echo $row['pengunjung_ramai']; ?></td>
+                        <td><?php echo $row['jarak_dekat']; ?></td>
+                        <td><?php echo $row['jarak_sedang']; ?></td>
+                        <td><?php echo $row['jarak_jauh']; ?></td>
+                    </tr>
+                    <?php 
+                    } ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        </div>
+    </div>
+<!--End-Chart-box--> 
+  </div>
+</div>
+
+<!--end-main-container-part-->
+
+<!--Footer-part-->
+
+<div class="row-fluid">
+    <?php $this->load->view('pendukung/footer'); ?>
+</div>
+
+<!--end-Footer-part-->
+<?php $this->load->view('pendukung/java_script'); ?>
+</body>
+</html>
